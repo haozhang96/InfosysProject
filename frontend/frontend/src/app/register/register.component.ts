@@ -18,6 +18,9 @@ export class RegisterComponent implements OnInit {
   addressCity = new FormControl('');
   addressState = new FormControl('');
   addressZip = new FormControl('');
+  creditCardNum = new FormControl('');
+  creditCardCode = new FormControl('');
+  creditCardExpire = new FormControl('');
   billingAddressNameFirst = new FormControl('');
   billingAddressNameLast = new FormControl('');
   billingAddressStreet = new FormControl('');
@@ -46,6 +49,9 @@ export class RegisterComponent implements OnInit {
         state: this.addressState.value,
         zip: this.addressZip.value
       },
+      billingCardNumber: this.creditCardNum.value,
+      billingCardCode: this.creditCardCode.value,
+      billingCardExpiration: this.creditCardExpire.value,
       billingAddress: {
       nameFirst: this.billingAddressNameFirst.value,
       nameLast: this.billingAddressNameLast.value,
