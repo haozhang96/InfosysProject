@@ -1,6 +1,7 @@
 from .models import User, Address, BillingInfo
 
 from django.contrib.auth.hashers import make_password
+from django.core.exceptions import ValidationError
 from django.core.serializers.json import DjangoJSONEncoder
 from django.core.validators import validate_email
 from django.http import HttpResponse, HttpResponseBadRequest
@@ -36,8 +37,9 @@ class RegisterUser(View):
 
             # Call the email validator which will raise an error if it's
             #   invalid.
-            # validate_email(data["userName"])
+            validate_email(data["email"])
 
+            # Create the model instances from the given user data.
             address, billing_address, billing_info = createUserInfo(data)
 
             # Create the user model instance.
@@ -57,6 +59,8 @@ class RegisterUser(View):
             return HttpResponse(status=200)
         except json.JSONDecodeError:
             return HttpResponseBadRequest("Invalid JSON body!")
+        except ValidationError:
+            return HttpResponseBadRequest("Invalid email!")
 
 class UpdateUser(View):
     def patch(self, request, *args, **kwargs):
@@ -66,8 +70,9 @@ class UpdateUser(View):
 
             # Call the email validator which will raise an error if it's
             #   invalid.
-            # validate_email(data["userName"])
+            validate_email(data["email"])
 
+            # Create the model instances from the given user data.
             address, billing_address, billing_info = createUserInfo(data)
 
             # Update the user model instance.
@@ -85,6 +90,8 @@ class UpdateUser(View):
             return HttpResponse(status=200)
         except json.JSONDecodeError:
             return HttpResponseBadRequest("Invalid JSON body!")
+        except ValidationError:
+            return HttpResponseBadRequest("Invalid email!")
 
 def createUserInfo(data):
     # Create the address model instance.
