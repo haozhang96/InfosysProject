@@ -12,31 +12,31 @@
           </div>
           <div class="form-group">
             <label for="userName">Username</label>
-            <input type="text" class="form-control" id="userName" placeholder="Username">
+            <input type="text" [formControl]="userName" class="form-control" id="userName" placeholder="Username">
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password">
+            <input type="password" [formControl]="password" class="form-control" id="password" placeholder="Password">
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" class="form-control" id="email" placeholder="Email">
+            <input type="text" [formControl]="email" class="form-control" id="email" placeholder="Email">
           </div>
           <div class="form-group">
             <label for="phone">Phone</label>
-            <input type="text" class="form-control" id="phone" placeholder="Phone">
+            <input type="text" [formControl]="phone" class="form-control" id="phone" placeholder="Phone">
           </div>
           <div class="form-group">
             <label for="address">Address</label>
             <div class="input-group" id="name">
-              <input type="text" aria-label="First name" placeholder="First" class="form-control">
-              <input type="text" aria-label="Last name" placeholder="Last" class="form-control">
+              <input type="text" [formControl]="addressNameFirst" aria-label="First name" placeholder="First" class="form-control">
+              <input type="text" [formControl]="addressNameLast" aria-label="Last name" placeholder="Last" class="form-control">
             </div>
-            <input type="text" class="form-control paddingAbove" id="address" placeholder="Address">
+            <input type="text" [formControl]="addressStreet" class="form-control paddingAbove" id="address" placeholder="Address">
             <div class="input-group paddingAbove">
-                <input type="text" class="form-control" placeholder="City" aria-label="city">
+                <input type="text" [formControl]="addressCity" class="form-control" placeholder="City" aria-label="city">
                 <div class="input-group-append">
-                  <select class="btn btn-outline-secondary dropdown-toggle form-control" id="state" aria-label="state" type="button">
+                  <select [formControl]="addressState" class="btn btn-outline-secondary dropdown-toggle form-control" id="state" aria-label="state" type="button">
                       <option value="AL">Alabama</option>
                       <option value="AK">Alaska</option>
                       <option value="AZ">Arizona</option>
@@ -91,23 +91,23 @@
                   </select>
                 </div>
               </div>
-            <input type="text" class="paddingAbove form-control" id="zip" placeholder="Zip">
+            <input type="text" [formControl]="addressZip" class="paddingAbove form-control" id="zip" placeholder="Zip">
           </div>
           <div class="form-group">
               <label for="address">Billing Information</label>
               <div class="input-group" id="name">
-                <input type="text" aria-label="First name" placeholder="First" class="form-control">
-                <input type="text" aria-label="Last name" placeholder="Last" class="form-control">
+                <input type="text" [formControl]="billingAddressNameFirst" aria-label="First name" placeholder="First" class="form-control">
+                <input type="text" [formControl]="billingAddressNameLast" aria-label="Last name" placeholder="Last" class="form-control">
               </div>
               <div class="input-group paddingAbove" id="creditcardinfo">
-                  <input type="text" aria-label="Credit Card #" placeholder="Credit Card #" style="width: 70%" class="form-control">
-                  <input type="text" aria-label="CVV" placeholder="CVV" class="form-control">
+                  <input type="text" [formControl]="creditCardNum" aria-label="Credit Card #" placeholder="Credit Card #" style="width: 70%" class="form-control">
+                  <input type="text" [formControl]="creditCardCode" aria-label="CVV" placeholder="CVV" class="form-control">
               </div>
-              <input type="text" class="form-control paddingAbove" id="billingaddress" placeholder="Billing Address">
+              <input type="text" class="form-control paddingAbove" [formControl]="billingAddressStreet" id="billingaddress" placeholder="Billing Address">
               <div class="input-group paddingAbove">
-                  <input type="text" class="form-control" placeholder="City" aria-label="city">
+                  <input type="text" class="form-control" [formControl]="billingAddressCity" placeholder="City" aria-label="city">
                   <div class="input-group-append">
-                    <select class="btn btn-outline-secondary dropdown-toggle form-control" id="state" aria-label="state" type="button">
+                    <select class="btn btn-outline-secondary dropdown-toggle form-control" [formControl]="billingAddressState"  id="state" aria-label="state" type="button">
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -163,7 +163,7 @@
                   </div>
                 </div>
   
-              <input type="text" class="paddingAbove form-control" id="zip" placeholder="Zip">
+              <input type="text" class="paddingAbove form-control" [formControl]="billingAddressZip" id="zip" placeholder="Zip">
             </div>
           <button type="submit" (click)="testClick()" class="btn btn-primary">Submit</button>
         </form>
