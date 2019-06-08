@@ -1,10 +1,11 @@
-from . import views
+from . import endpoints
 
 # Django
 from django.urls import path
 
 
 urlpatterns = [
-	path("login", views.login, name="login"),
-	path("logout", views.logout, name="logout"),
+    path("users", endpoints.GetUsers.as_view(), name="login"),
+	path("users/register", endpoints.RegisterUser.as_view(), name="register"),
+	path("users/update", endpoints.UpdateUser.as_view(), name="update"),
 ]
