@@ -31,7 +31,32 @@ export class RegisterComponent implements OnInit {
   }
 
   testClick() {
-    console.log(this.nameFirst, this.nameLast);
+    let reqBody = {
+      firstName: this.nameFirst.value,
+      lastName: this.nameLast.value,
+      userName: this.userName.value,
+      password: this.password.value,
+      email: this.email.value,
+      phone: this.phone.value,
+      homeAddress: {
+        nameFirst: this.addressNameFirst.value,
+        nameLast: this.addressNameLast.value,
+        street: this.addressStreet.value,
+        city: this.addressCity.value,
+        state: this.addressState.value,
+        zip: this.addressZip.value
+      },
+      billingAddress: {
+      nameFirst: this.billingAddressNameFirst.value,
+      nameLast: this.billingAddressNameLast.value,
+      street: this.billingAddressStreet.value,
+      city: this.billingAddressCity.value,
+      state: this.billingAddressState.value,
+      zip: this.billingAddressZip.value
+      }
+    };
+
+    console.log(reqBody);
   }
 
 }
